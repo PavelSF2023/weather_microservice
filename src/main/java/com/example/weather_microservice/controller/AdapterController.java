@@ -1,6 +1,7 @@
 package com.example.weather_microservice.controller;
 
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import com.example.weather_microservice.model.MessageA;
 import com.example.weather_microservice.model.MessageB;
 import com.example.weather_microservice.service.service.WeatherService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Api(value = "AdapterController", tags = {"Adapter API"})
 @RestController
 public class AdapterController {
 
@@ -20,6 +22,7 @@ public class AdapterController {
         this.weatherService = weatherService;
     }
 
+    @ApiOperation(value = "Processes a message", notes = "Processes a MessageA object and sends a message to Service B")
     @PostMapping("/processMessage")
     public void processMessage(@RequestBody MessageA messageA) {
 
